@@ -1,50 +1,40 @@
 
-let computerScore = 0;
-let playerScore = 0;
+let playerSelection = "rock" //window.prompt("Type rock, paper, or scissors")
+
 
 
       function playRound() {
         const selection = ["rock", "paper", "scissors"];
-        const computerSelection = selection[Math.floor(Math.random() * 3)];
-        const playerSelection = window.prompt("Type rock, paper, or scissors");
-
+        let computerSelection = selection[Math.floor(Math.random() * 3)];
+        console.log("comp" + computerSelection)
         if (playerSelection == computerSelection) {
-          return (playerSelection + "  " + computerSelection + " " + "It's a draw! Go again.");
+          return ("Draw!");
         } else if (playerSelection == "rock" && computerSelection == "scissors") {
-            console.log("Rock beats scissors");
           return ("You win!")
         } else if (playerSelection == "paper" && computerSelection == "rock") {
-            console.log("Paper beats rock");
           return ("You win!")
         } else if (playerSelection == "scissors" && computerSelection == "paper") {
-            console.log("Scissors beats paper");
           return ("You win!")
         } else return ("You lose!");
       }
+      //Loop works perfect befor if statements
+      function game(){
+        let computerScore = 0;
+        let playerScore = 0;
 
-
-
-      function game() {
-       
-        for (let i = 0; i < 5; i++) {
-         
-          if (playRound() == "You win!"){
-              playerScore +=1;
-              console.log("Nice! + 1 point")
-          } else {console.log("doh!")};
-          
+        for (let i = 0; i < 5; i++){
         
-        console.log("Total points: " + playerScore);
+        if (playRound() == "You win!") {
+          console.log("You win!")
+          playerScore +=1;
+          
         }
-    
-        console.log("Final score: " + playerScore);
-    }
+        
+        }
+        console.log(playerScore)
+      }
 
-
-      console.log(game());
-
-
-
+      
 
 
      /* function playRound() {
