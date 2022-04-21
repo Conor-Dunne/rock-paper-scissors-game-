@@ -1,29 +1,73 @@
 
-let playerSelection = "rock" //window.prompt("Type rock, paper, or scissors")
 let result;
+let playerSelection;
+const buttons = Array.from(document.querySelectorAll('button'));
+const roundsBox = document.querySelector(".rounds");
+const selection = ["ROCK", "PAPER", "SCISSORS"];
 
 
+buttons.forEach((button) => {
 
-      function playRound() {
-        const selection = ["rock", "paper", "scissors"];
-        let computerSelection = selection[Math.floor(Math.random() * 3)];
-        console.log("comp" + computerSelection)
+  button.addEventListener('click', () => {
+    playerSelection = button.textContent;
+    playRound();
+  });
+});
+
+
+    function playRound() {  
+        const computerSelection = selection[Math.floor(Math.random() * 3)];
+        const oneRound = document.createElement("div");
+        const br = document.createElement("br");
+        oneRound.classList.add("rounds");
+        console.log("player =  " + playerSelection)
+        console.log("computer =  " + computerSelection)
         if (playerSelection == computerSelection) {
+          oneRound.setAttribute('style', 'white-space: pre;');
+          oneRound.textContent = "DRAW \r\n"
+          oneRound.textContent += `${playerSelection} <-------------------------------> ${computerSelection}`
+          roundsBox.appendChild(oneRound);
           return (result = "Draw!");
         } else if (playerSelection == "rock" && computerSelection == "scissors") {
+          oneRound.textContent = `${playerSelection} ----- YOU WIN! ----- ${computerSelection}`;
+          roundsBox.appendChild(oneRound);
           return (result = "You win!")
         } else if (playerSelection == "paper" && computerSelection == "rock") {
+          oneRound.textContent = `${playerSelection} ----- YOU WIN! ----- ${computerSelection}`;
+          roundsBox.appendChild(oneRound);
           return (result = "You win!")
         } else if (playerSelection == "scissors" && computerSelection == "paper") {
+          oneRound.textContent = `${playerSelection} ----- YOU WIN! ----- ${computerSelection}`;
+          roundsBox.appendChild(oneRound);
           return (result = "You win!")
-        } else return (result = "You lose!");
+        } else {
+            oneRound.textContent = `${playerSelection} ----- YOU LOSE! ----- ${computerSelection}`;
+            roundsBox.appendChild(oneRound);
+            return result = "You lose!";
+        }
       }
+
+
+
+function test () {
+  console.log(roundsBox);
+}
+
+test ();
+
+
+
+
+
+
+
+
       //Loop works perfect befor if statements
-      function game(){
+      /*function game(){
         let computerScore = 0;
         let playerScore = 0;
 
-        for (let i = 0; i < 50; i++){
+        for (let i = 0; i < 5; i++){
         
         if (playRound() == "You win!") {
           console.log("You win!")
