@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Rock, Paper, scissors</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
+
 <body>
     <div class="container">
         <div class="selections">
@@ -14,63 +16,13 @@
             <button id="scissors" class="selection">SCISSORS</button>
             <button id="paper" class="selection">PAPER</button>
         </div>
-        <div class="rounds">
-            <div><pre><h1>Player <span id="playerScore">0</span> - <span id="compScore">0</span> Computer</h1></pre></div>
+        <div>
+            <pre><h1>Player <span id="playerScore">0</span> - <span id="compScore">0</span> Computer</h1></pre>
         </div>
+        <div class="rounds">First to 5 wins!</div>
     </div>
-    
+
 </body>
 <script src="./script.js"></script>
+
 </html>
-
-
-
-<!--
-1. Create function to return random answer from computer
-2. create function to accept selction from user and computer
-3. compare inputs and declare win, lose , or draw.
-4. Make play function to perform a 5 round game and report overall winner
-
-
-Play function
-
-* set two variables to record player/computer score if they win a round
-* Use a for loop to call playRound 5 times
-* update player or user score with 1 point if they win
-* stop after five rounds and compare scores
-* declare winner with the highest score
-
-
-
-
-
--->
-
-
-
-
-
-
-<!--****OLD STUFF***-->
-
-
-<!--function playRound(playerSelection, computerSelection){
-    if (playerSelection == computerSelection) {
-        return (playerSelection + "  " + computerSelection + " " + "It's a draw! Go again.");
-    } else if (playerSelection == "rock" && computerSelection == "scissors") {
-        return (playerSelection + "  " + computerSelection + " " + "You win! Rock beats scissors")
-    } else if (computerSelection == "scissors" && playerSelection == "paper"){
-        return (playerSelection + "  " + computerSelection + " " + "You lose! Scissors beats paper.")
-    } else if (playerSelection == "paper" && computerSelection == "rock") {
-        return (playerSelection + "  " + computerSelection + " " + "You win! Paper beats rock.")
-    } else if (computerSelection == "rock" && playerSelection == "scissors"){
-        return (playerSelection + "  " + computerSelection + " " + "You lose! Rock beats scissors.")
-    } else if (playerSelection == "scissors" && computerSelection == "paper") {
-        return (playerSelection + "  " + computerSelection + " " + "You win! scissors beats paper.")
-    } else if (computerSelection == "paper" && playerSelection == "rock"){
-        return (playerSelection + "  " + computerSelection + " " + "You lose!paper beats rock.")
-    } 
-
-    console.log();
-
-}*
