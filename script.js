@@ -1,5 +1,7 @@
 
 let result;
+let playerScore = 0;
+let computerScore = 0; 
 let playerSelection;
 const buttons = Array.from(document.querySelectorAll('button'));
 const roundsBox = document.querySelector(".rounds");
@@ -15,10 +17,12 @@ buttons.forEach((button) => {
 });
 
 
-    function playRound() {  
+    function playRound() { 
+ 
         const computerSelection = selection[Math.floor(Math.random() * 3)];
         const oneRound = document.createElement("div");
-        const br = document.createElement("br");
+        const pScore = document.querySelector("#playerScore");
+        const cScore = document.querySelector("#compScore");
         oneRound.classList.add("rounds");
         console.log("player =  " + playerSelection)
         console.log("computer =  " + computerSelection)
@@ -28,23 +32,36 @@ buttons.forEach((button) => {
           oneRound.textContent += `${playerSelection} <-------------------------------> ${computerSelection}`
           roundsBox.appendChild(oneRound);
           return (result = "Draw!");
-        } else if (playerSelection == "rock" && computerSelection == "scissors") {
+        } else if (playerSelection == "ROCK" && computerSelection == "SCISSORS") {
           oneRound.textContent = `${playerSelection} ----- YOU WIN! ----- ${computerSelection}`;
           roundsBox.appendChild(oneRound);
+          playerScore +=1;
+          pScore.textContent = playerScore;
           return (result = "You win!")
-        } else if (playerSelection == "paper" && computerSelection == "rock") {
+        } else if (playerSelection == "PAPER" && computerSelection == "ROCK") {
           oneRound.textContent = `${playerSelection} ----- YOU WIN! ----- ${computerSelection}`;
           roundsBox.appendChild(oneRound);
+          playerScore +=1;
+          pScore.textContent = playerScore;
           return (result = "You win!")
-        } else if (playerSelection == "scissors" && computerSelection == "paper") {
+        } else if (playerSelection == "SCISSORS" && computerSelection == "PAPER") {
           oneRound.textContent = `${playerSelection} ----- YOU WIN! ----- ${computerSelection}`;
           roundsBox.appendChild(oneRound);
+          playerScore +=1;
+          pScore.textContent = playerScore;
           return (result = "You win!")
         } else {
             oneRound.textContent = `${playerSelection} ----- YOU LOSE! ----- ${computerSelection}`;
             roundsBox.appendChild(oneRound);
+            computerScore +=1;
+            cScore.textContent = computerScore;
             return result = "You lose!";
+
         }
+      }
+
+      function game () {
+
       }
 
 
