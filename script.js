@@ -34,40 +34,56 @@ function playRound() {
   paperImg.src = "./images/paper.png";
   const computerSelection = selection[Math.floor(Math.random() * 3)];
   const oneRound = document.createElement("div");
+  const leftP = document.createElement("p");
+  const rightP = document.createElement("p")
   const pScore = document.querySelector("#playerScore");
   const cScore = document.querySelector("#compScore");
   oneRound.classList.add("oneRound");
-  ("computer =  " + computerSelection)
   if (playerSelection == computerSelection) {
+    oneRound.appendChild(leftP);
+    leftP.textContent = playerSelection;
     oneRound.appendChild(h1);
     h1.textContent = "DRAW";
+    oneRound.appendChild(rightP);
+    rightP.textContent = computerSelection;
     roundsBox.prepend(oneRound);
   } else if (playerSelection == "ROCK" && computerSelection == "SCISSORS") {
-    oneRound.appendChild(rockImg);
+    oneRound.appendChild(leftP);
+    leftP.textContent = playerSelection;
     oneRound.appendChild(h1);
     h1.textContent = "WIN";
-    oneRound.appendChild(scissorsImg);
+    oneRound.appendChild(rightP);
+    rightP.textContent = computerSelection;
     roundsBox.prepend(oneRound);
     playerScore += 1;
     pScore.textContent = playerScore;
   } else if (playerSelection == "PAPER" && computerSelection == "ROCK") {
-    oneRound.appendChild(paperImg);
+    oneRound.appendChild(leftP);
+    leftP.textContent = playerSelection;
     oneRound.appendChild(h1);
     h1.textContent = "WIN";
-    oneRound.appendChild(rockImg);
-    roundsBox.prepend(oneRound);
+    rightP.textContent = computerSelection;
+    oneRound.appendChild(rightP);
+    roundsBox.prepend(oneRound)
     playerScore += 1;
     pScore.textContent = playerScore;
   } else if (playerSelection == "SCISSORS" && computerSelection == "PAPER") {
-    oneRound.appendChild(scissorsImg);
+    oneRound.appendChild(leftP);
+    leftP.textContent = playerSelection;
     oneRound.appendChild(h1);
     h1.textContent = "WIN";
-    oneRound.appendChild(paperImg);
+    rightP.textContent = computerSelection;
+    oneRound.appendChild(rightP);
     roundsBox.prepend(oneRound);
     playerScore += 1;
     pScore.textContent = playerScore;
   } else {
-    oneRound.textContent = `${playerSelection} ----- YOU LOSE! ----- ${computerSelection}`;
+    oneRound.appendChild(leftP);
+    leftP.textContent = playerSelection;
+    oneRound.appendChild(h1);
+    h1.textContent = "LOSE";
+    oneRound.appendChild(rightP);
+    rightP.textContent = computerSelection;
     roundsBox.prepend(oneRound);
     computerScore += 1;
     cScore.textContent = computerScore;
