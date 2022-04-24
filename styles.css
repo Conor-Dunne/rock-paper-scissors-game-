@@ -4,7 +4,6 @@ html {
 }
 
 
-
 body,
 html {
   margin: 0;
@@ -49,4 +48,21 @@ html {
   color: white;
   background: rgba(23, 33, 172, 0.4);
   text-shadow: 0 0 .5rem black;
+}
+
+.oneRound {
+  border: .4rem solid black;
+  border-radius: .5rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem .5rem;
+  transition: all .07s ease;
+  text-align: center;
+  color: white;
+  background: rgba(23, 33, 172, 0.4);
+  text-shadow: 0 0 .5rem black;
+  gap: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

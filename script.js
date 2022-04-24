@@ -9,6 +9,7 @@ const roundsBox = document.querySelector(".rounds");
 const selection = ["ROCK", "PAPER", "SCISSORS"];
 
 
+
 buttons.forEach((button) => {
 
   button.addEventListener('click', () => {
@@ -19,31 +20,49 @@ buttons.forEach((button) => {
 });
 
 
-function playRound() {
 
+
+
+function playRound() {
+  const choice = new Object();
+  const h1 = document.createElement("h1");
+  const rockImg = new Image(50, 50);
+  rockImg.src = "./images/rock.png";
+  const scissorsImg = new Image(40, 40);
+  scissorsImg.src = "./images/scissors.png";
+  const paperImg = new Image(50, 50);
+  paperImg.src = "./images/paper.png";
   const computerSelection = selection[Math.floor(Math.random() * 3)];
   const oneRound = document.createElement("div");
   const pScore = document.querySelector("#playerScore");
   const cScore = document.querySelector("#compScore");
-  oneRound.classList.add("rounds");
+  oneRound.classList.add("oneRound");
   ("computer =  " + computerSelection)
   if (playerSelection == computerSelection) {
-    oneRound.setAttribute('style', 'white-space: pre;');
-    oneRound.textContent = "DRAW \r\n"
-    oneRound.textContent += `${playerSelection} <--------------------------> ${computerSelection}`
+    oneRound.appendChild(h1);
+    h1.textContent = "DRAW";
     roundsBox.prepend(oneRound);
   } else if (playerSelection == "ROCK" && computerSelection == "SCISSORS") {
-    oneRound.textContent = `${playerSelection} ----- YOU WIN! ----- ${computerSelection}`;
+    oneRound.appendChild(rockImg);
+    oneRound.appendChild(h1);
+    h1.textContent = "WIN";
+    oneRound.appendChild(scissorsImg);
     roundsBox.prepend(oneRound);
     playerScore += 1;
     pScore.textContent = playerScore;
   } else if (playerSelection == "PAPER" && computerSelection == "ROCK") {
-    oneRound.textContent = `${playerSelection} ----- YOU WIN! ----- ${computerSelection}`;
+    oneRound.appendChild(paperImg);
+    oneRound.appendChild(h1);
+    h1.textContent = "WIN";
+    oneRound.appendChild(rockImg);
     roundsBox.prepend(oneRound);
     playerScore += 1;
     pScore.textContent = playerScore;
   } else if (playerSelection == "SCISSORS" && computerSelection == "PAPER") {
-    oneRound.textContent = `${playerSelection} ----- YOU WIN! ----- ${computerSelection}`;
+    oneRound.appendChild(scissorsImg);
+    oneRound.appendChild(h1);
+    h1.textContent = "WIN";
+    oneRound.appendChild(paperImg);
     roundsBox.prepend(oneRound);
     playerScore += 1;
     pScore.textContent = playerScore;
