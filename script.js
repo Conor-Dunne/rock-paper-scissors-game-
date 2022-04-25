@@ -14,81 +14,50 @@ buttons.forEach((button) => {
 
   button.addEventListener('click', () => {
     playerSelection = button.textContent;
-    playRound();
+    playRound(computerSelection());
     game();
   });
 });
 
+const computerSelection = function () {
+  return selection[Math.floor(Math.random() * 3)];
+};
 
 
 
-
-function playRound() {
-  const choice = new Object();
+function playRound(computerSelection) {
   const h1 = document.createElement("h1");
-  const rockImg = new Image(50, 50);
-  rockImg.src = "./images/rock.png";
-  const scissorsImg = new Image(40, 40);
-  scissorsImg.src = "./images/scissors.png";
-  const paperImg = new Image(50, 50);
-  paperImg.src = "./images/paper.png";
-  const computerSelection = selection[Math.floor(Math.random() * 3)];
   const oneRound = document.createElement("div");
-  const leftP = document.createElement("p");
-  const rightP = document.createElement("p")
+  oneRound.classList.add("oneRound");
   const pScore = document.querySelector("#playerScore");
   const cScore = document.querySelector("#compScore");
-  oneRound.classList.add("oneRound");
+  let playerPic = new Image(45, 45);
+  let compPic = new Image(45, 45);
+  playerPic.src = `./images/${playerSelection}.png`;
+  compPic.src = `./images/${computerSelection}.png`;
   if (playerSelection == computerSelection) {
-    oneRound.appendChild(leftP);
-    leftP.textContent = playerSelection;
-    oneRound.appendChild(h1);
     h1.textContent = "DRAW";
-    oneRound.appendChild(rightP);
-    rightP.textContent = computerSelection;
-    roundsBox.prepend(oneRound);
   } else if (playerSelection == "ROCK" && computerSelection == "SCISSORS") {
-    oneRound.appendChild(leftP);
-    leftP.textContent = playerSelection;
-    oneRound.appendChild(h1);
     h1.textContent = "WIN";
-    oneRound.appendChild(rightP);
-    rightP.textContent = computerSelection;
-    roundsBox.prepend(oneRound);
     playerScore += 1;
     pScore.textContent = playerScore;
   } else if (playerSelection == "PAPER" && computerSelection == "ROCK") {
-    oneRound.appendChild(leftP);
-    leftP.textContent = playerSelection;
-    oneRound.appendChild(h1);
     h1.textContent = "WIN";
-    rightP.textContent = computerSelection;
-    oneRound.appendChild(rightP);
-    roundsBox.prepend(oneRound)
     playerScore += 1;
     pScore.textContent = playerScore;
   } else if (playerSelection == "SCISSORS" && computerSelection == "PAPER") {
-    oneRound.appendChild(leftP);
-    leftP.textContent = playerSelection;
-    oneRound.appendChild(h1);
     h1.textContent = "WIN";
-    rightP.textContent = computerSelection;
-    oneRound.appendChild(rightP);
-    roundsBox.prepend(oneRound);
     playerScore += 1;
     pScore.textContent = playerScore;
   } else {
-    oneRound.appendChild(leftP);
-    leftP.textContent = playerSelection;
-    oneRound.appendChild(h1);
     h1.textContent = "LOSE";
-    oneRound.appendChild(rightP);
-    rightP.textContent = computerSelection;
-    roundsBox.prepend(oneRound);
     computerScore += 1;
     cScore.textContent = computerScore;
   }
-
+    oneRound.appendChild(playerPic);
+    oneRound.appendChild(h1);
+    oneRound.appendChild(compPic);
+    roundsBox.prepend(oneRound);
 
 }
 
